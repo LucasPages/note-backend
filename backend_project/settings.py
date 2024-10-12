@@ -83,9 +83,9 @@ load_dotenv("/home/lucas/Documents/web/note_backend/backend_project/.env")
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'note_app',
-        'USER': 'lucas',
-        'HOST': 'localhost',
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        'HOST': os.getenv("DB_HOST"),
         'PASSWORD': os.getenv("DB_PASSWORD")
     }
 }
