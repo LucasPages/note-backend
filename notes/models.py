@@ -9,7 +9,7 @@ class Note(models.Model):
 
     def __str__(self) -> str:
         if len(self.note) > 20:
-            max_length = 20
+            string = self.note[:20] + "..."
         else:
-            max_length = len(self.note)
-        return f"{self.title} : {self.note[:max_length]}"
+            string = self.note
+        return f"{self.title} : {string}"

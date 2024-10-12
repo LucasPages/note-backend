@@ -33,6 +33,10 @@ class NoteTest(TestCase):
         self.assertEqual(note_obj.last_edited, datetime.now(tz=timezone.utc))
         self.assertNotEqual(note_obj.created_at, datetime.now(tz=timezone.utc))
         freezer.stop()
+    
+    def test_string_representation(self):
+        note_obj_20 = Note.objects.create(title="test", note="this note is a test")
+        note_obj_more = Note.objects.create(title="test", note="this note is a test, and it's long")
 
-        
-
+        self.assertEqual(str(note_obj_20), f"{note_obj_20.title} : {note_obj_20.note}")
+        self.assertEqual(str(note_obj_more), f"{note_obj_more.title} : {note_obj_more.note[:20]}...")
