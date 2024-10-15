@@ -5,9 +5,6 @@ from datetime import datetime, timezone
 
 
 class NoteTest(TestCase):
-    def setUp(self):
-        pass
-
     def test_empty_note(self):
         note_obj = Note.objects.create()
 
