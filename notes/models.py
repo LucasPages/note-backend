@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Note(models.Model):
+    owner = models.ForeignKey(User, related_name='notes', on_delete=models.CASCADE, default=1)
     title = models.TextField(max_length=20, blank=True)
     note = models.TextField(max_length=256, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
