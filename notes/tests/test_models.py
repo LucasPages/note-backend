@@ -1,10 +1,15 @@
 from django.test import TestCase
+from django.contrib.auth.models import User
 from notes.models import Note
 from freezegun import freeze_time
 from datetime import datetime, timezone
 
 
 class NoteTest(TestCase):
+    @classmethod
+    def setUpTestData(cls) -> None:
+        User.objects.create(email="test@test.com", username="test", password="pass")
+    
     def test_empty_note(self):
         note_obj = Note.objects.create()
 

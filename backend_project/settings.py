@@ -86,18 +86,7 @@ DATABASES = {
         'NAME': os.getenv("DB_NAME"),
         'USER': os.getenv("DB_USER"),
         'HOST': os.getenv("DB_HOST"),
-        'PASSWORD': os.getenv("DB_PASSWORD")
-    }
-}
-
-if os.environ.get("GITHUB_WORKFLOW"):
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'github_actions',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '127.0.0.1',
+        'PASSWORD': os.getenv("DB_PASSWORD"),
         'PORT': '5432',
     }
 }
@@ -142,3 +131,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_PERMISSION_CLASSES' : [],
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+}
