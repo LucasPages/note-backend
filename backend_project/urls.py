@@ -17,8 +17,13 @@ Including another URLconf
 from django.urls import path, include
 from notes import views
 
+from auth.views import LogoutView
+
 urlpatterns = [
     path('', include('notes.urls')),
+    path("auth/", include("djoser.urls")),
+    path("auth/", include("djoser.urls.jwt")),
+    path("auth/logout/", LogoutView.as_view()),
     path('register/', views.CreateUser.as_view(), name="register-user"),
     path('my-notes/', views.NotesSpecificUser.as_view(), name="notes-user"),
 ]
