@@ -7,6 +7,8 @@ from django.urls import reverse
 from notes.models import Note
 
 
+# TODO: redo testing to account for the JWT authentication
+
 class UserRoutesTest(APITestCase):
     @classmethod
     def setUpTestData(cls):
