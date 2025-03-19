@@ -7,9 +7,11 @@ from rest_framework.permissions import IsAuthenticated
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth import authenticate, login, logout
-
+from auth.serializers import LoginSerializer
 
 class LoginView(APIView):
+    serializer_class = LoginSerializer
+
     @method_decorator(ensure_csrf_cookie)
     def get(self, request):
         return Response({
