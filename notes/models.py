@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-
+import uuid
 User = get_user_model()
 
 
 class Note(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     owner = models.ForeignKey(User, related_name='notes', on_delete=models.CASCADE)
     title = models.TextField(max_length=20, blank=True)
     note = models.TextField(max_length=256, blank=True)

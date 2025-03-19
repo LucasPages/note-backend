@@ -8,10 +8,11 @@ class NoteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Note
         fields = ['url', 'title', 'note', 'created_at', 'last_edited', 'owner']
-        lookup_field = 'pk'
+        lookup_field = 'id'
         extra_kwargs = {
             'owner': {
                 'lookup_field': 'id', 
-                'view_name': 'user-detail'
+                'view_name': 'user-detail',
+                'read_only': True
             }
         }
