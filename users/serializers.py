@@ -13,5 +13,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             'url': {
                 'lookup_field': 'id',
                 'view_name': 'user-detail'
+            },
+            'notes': {
+                'read_only': True
             }
         }
