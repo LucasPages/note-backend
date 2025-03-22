@@ -13,7 +13,7 @@ class NoteViewSet(viewsets.ModelViewSet):
     serializer_class = NoteSerializer
     permission_classes = [IsAuthenticated]
     lookup_field = 'id'
-    
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
@@ -32,6 +32,3 @@ class TagViewSet(viewsets.ModelViewSet):
     serializer_class = TagSerializer
     permission_classes = [IsAuthenticated]
     lookup_field = 'id'
-
-    def get_queryset(self):
-        return Tag.objects.filter(notes__owner=self.request.user)

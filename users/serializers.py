@@ -9,13 +9,16 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ['id', 'url', 'email', 'notes']
         lookup_field = 'id'
-        
+
         extra_kwargs = {
             'url': {
                 'lookup_field': 'id',
                 'view_name': 'user-detail'
             },
             'notes': {
-                'read_only': True
+                'lookup_field': 'id',
+                'view_name': 'note-detail',
+                'read_only': True,
+                'many': True
             }
         }
